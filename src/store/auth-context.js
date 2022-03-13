@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useRef } from "react/cjs/react.development";
 
 const AuthContext = React.createContext({
-  isLoggedIn: false,
   token: "",
+  isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
 });
@@ -22,7 +21,7 @@ export const AuthContextProvider = (props) => {
   };
 
   const contextValue = {
-    token,
+    token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
@@ -30,7 +29,7 @@ export const AuthContextProvider = (props) => {
 
   return (
     <AuthContext.Provider value={contextValue}>
-      {props.childern}
+      {props.children}
     </AuthContext.Provider>
   );
 };
